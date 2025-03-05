@@ -21,7 +21,7 @@ func main() {
 	}
 
 	// Generate password
-	password := randomizer.generatePassword(*length)
+	password := randomizer.GeneratePassword(*length)
 	fmt.Println("Generated Password:", password)
 
 	// Allow saving to file (optional)

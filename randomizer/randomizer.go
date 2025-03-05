@@ -19,7 +19,7 @@ func getRandomChar(charset string) byte {
 	return charset[n.Int64()]
 }
 
-func generatePassword(length int) string {
+func GeneratePassword(length int) string {
 	if length < 12 || length > 20 {
 		length = 16 // Default length if out of range
 	}
