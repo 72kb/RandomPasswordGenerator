@@ -1,8 +1,7 @@
-package main
+package randomizer
 
 import (
 	"crypto/rand"
-	"fmt"
 	"math/big"
 	"strings"
 )
@@ -51,10 +50,4 @@ func shuffleString(input string) string {
 		runes[i], runes[j.Int64()] = runes[j.Int64()], runes[i] // Swap characters
 	}
 	return string(runes) // Convert runes back to string
-}
-
-func main() {
-	passwordLength := 16 // You can modify this
-	password := generatePassword(passwordLength)
-	fmt.Println("Generated Password:", password)
 }
