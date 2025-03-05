@@ -1,84 +1,93 @@
-# Secure Password Generator (Go)
+# Random Password Generator
 
-A lightweight and secure password generator written in **Go**. This tool generates random passwords of configurable length and complexity, ensuring strong security practices using **cryptographic randomness (`crypto/rand`)**.
+A simple Go-based password generator that can be used as both a CLI tool and a reusable package.
 
-## 🚀 Features
-- ✅ Generates passwords between **12-20 characters** (configurable).
-- ✅ Includes at least **one uppercase, lowercase, digit, and special character**.
-- ✅ Uses **cryptographically secure randomization**.
-- ✅ Supports **shuffling for unpredictability**.
-- ✅ Optimized for performance using **`strings.Builder`**.
-- ✅ Can be used as a **CLI tool**.
+## Features
 
-## 🛠 Installation
-Ensure you have **Go installed**. If not, [download it here](https://go.dev/dl/).
+- Generates secure random passwords.
+- Ensures at least one lowercase, uppercase, digit, and special character.
+- Supports password lengths between 12 and 20 characters.
+- Can be used as a command-line tool or imported as a Go package.
+
+---
+
+## 1️⃣ Using as a CLI Tool
+
+### **Installation**
+
+Clone the repository:
 
 ```sh
-# Clone the repository
-git clone https://github.com/yourusername/password-generator-go.git
-cd password-generator-go
-
-# Build the project
-go build -o password-generator
-
-# Run the program
-./password-generator
+git clone https://github.com/72kb/RandomPasswordGenerator.git
+cd RandomPasswordGenerator
 ```
 
-## 📌 Usage
+Build the executable:
 
-### **1️⃣ Generate a Password in Code**
+```sh
+go build -o passwordgen
+```
+
+### **Usage**
+
+Run the CLI with a specified password length:
+
+```sh
+./passwordgen -length=16
+```
+
+To save the password to a file:
+
+```sh
+./passwordgen -length=18 mypassword.txt
+```
+
+---
+
+## 2️⃣ Using as a Go Package
+
+### **Installation**
+
+Fetch the package using `go get`:
+
+```sh
+go get github.com/72kb/RandomPasswordGenerator/randomizer
+```
+
+### **Import & Usage**
+
+Use it in your Go project:
+
 ```go
 package main
 
 import (
     "fmt"
+    "github.com/72kb/RandomPasswordGenerator/randomizer"
 )
 
 func main() {
-    password := generatePassword(16) // Generate a 16-character password
+    password := randomizer.generatePassword(16)
     fmt.Println("Generated Password:", password)
 }
 ```
 
-### **2️⃣ Run as a CLI Tool**
-```sh
-./password-generator -length=14
+---
+
+## Project Structure
+
 ```
-
-### **3️⃣ Example Output**
+RandomPasswordGenerator/
+│── randomizer/         # Go package folder
+│   ├── randomizer.go   # Contains password generation logic
+│── main.go             # CLI tool
+│── go.mod              # Go module file
+│── README.md           # Documentation
 ```
-Generated Password: G7!xPq19B4$
-```
-
-## 🔧 Configuration
-Modify `generatePasswordWithConfig` to customize password rules:
-```go
-config := PasswordConfig{
-    IncludeLowercase: true,
-    IncludeUppercase: true,
-    IncludeDigits:    true,
-    IncludeSpecial:   false, // No special characters
-    Length:           14,
-}
-password := generatePasswordWithConfig(config)
-```
-
-## 🔒 Security Considerations
-- Uses **`crypto/rand`** for **secure randomness**.
-- **Avoids predictable patterns** by shuffling characters.
-- **Never store passwords** in plaintext; use a **password manager**.
-
-## 📜 License
-This project is **open-source** under the MIT License.
-
-## 💡 Contributing
-Pull requests are welcome! Feel free to open issues for improvements or feature requests.
-
-## 📬 Contact
-Have questions or suggestions? Reach out on **GitHub Issues**!
 
 ---
-💻 **Happy coding!** 🚀
 
+## License
+
+This project is open-source under the [MIT License](LICENSE).
 
