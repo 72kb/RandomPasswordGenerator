@@ -67,7 +67,7 @@ import (
 )
 
 func main() {
-    password := randomizer.generatePassword(16)
+    password := randomizer.GeneratePassword(16)
     fmt.Println("Generated Password:", password)
 }
 ```
